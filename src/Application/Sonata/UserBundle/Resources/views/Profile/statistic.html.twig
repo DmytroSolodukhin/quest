@@ -1,0 +1,80 @@
+{% extends "SonataUserBundle:Profile:action.html.twig" %}
+
+{% block sonata_profile_title %}
+    {{ parent() }} - {% trans from 'SonataUserBundle' %}title_edit_profile_organizations {% endtrans %}
+{% endblock %}
+
+{% block sonata_profile_content %}
+    {% for quest in history %}
+        {% set price = 0 %}
+        {% set count = 0 %}
+    <div class="row history">
+        <h1>{{ quest.title }}</h1>
+            <div class="col-sm-2 quest">
+                    <h4>Квест</h4>
+            </div>
+            <div class="col-sm-1 quest">
+                    <h4>Число</h4>
+            </div>
+            <div class="col-sm-1 quest">
+                    <h4>Время</h4>
+            </div>
+            <div class="col-sm-2 quest">
+                    <h4>Тел:</h4>
+            </div>
+            <div class="col-sm-1 quest">
+                    <h4>Имя</h4>
+            </div>
+            <div class="col-sm-2 quest">
+                    <h4>Cтоимость</h4>
+            </div>
+            <div class="col-sm-2 quest">
+                    <h4>Кол-во чел.</h4>
+            </div>
+            <div class="col-sm-1 quest">
+            </div>
+    {% for zakaz in quest.history %}
+            <div class="col-sm-2 quest">
+                <div class="admin_big">{{ quest.title|slice(0, 8) }}</div>
+            </div>
+            <div class="col-sm-1 quest">
+                <div class="admin_big">{{ zakaz.open|date('d/m/y') }}</div>
+            </div>
+            <div class="col-sm-1 quest">
+                <div class="admin_big">{{ zakaz.visit.title|slice(0, 8) }}</div>
+            </div>
+            <div class="col-sm-2 quest">
+                <div class="admin_big"> {{ zakaz.phone|replace({' ':''})|replace({')':''})|replace({'(':''})|replace({'+':''})|replace({'-':''}) }}</div>
+            </div>
+            <div class="col-sm-1 quest">
+                <div class="admin_big">{{ zakaz.title|slice(0, 5) }}</div>
+            </div>
+            <div class="col-sm-2 quest">
+                <div class="admin_big">{{ zakaz.price }}</div>
+            </div>
+            <div class="col-sm-2 quest">
+                <div class="admin_big">{{ zakaz.count }}</div>
+            </div>
+            <div class="col-sm-1 quest">
+            </div>
+        {% set price = price + zakaz.price %}
+        {% set count = count + zakaz.count %}
+    {% endfor %}
+        <div class="col-sm-4">
+            Колмчество посещений:   {{ quest.history|length }}
+        </div>
+        <div class="col-sm-2 col-md-offset-3">
+            {{ price }}
+        </div>
+        <div class="col-sm-2">
+            {{ count }}
+        </div>
+        <div class="col-sm-1">
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}
+{% block footer_js %}
+    {{ parent() }}
+    <script src="/js/knockout-3.4.0.js"></script>
+{% endblock %}

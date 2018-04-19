@@ -1,0 +1,21 @@
+{% extends "SonataUserBundle:Profile:action.html.twig" %}
+
+{% block page_head_js %}
+    {{ parent() }}
+    <script src="{{ asset('/js/holder.js') }}"></script>
+
+    <script src="{{ asset('/js/jquery.ohgooglemaps.js') }}"></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+{% endblock %}
+
+{% block sonata_profile_title %}
+    {{ parent() }} - {% trans from 'SonataUserBundle' %}title_edit_profile_organizations {% endtrans %}
+{% endblock %}
+
+{% block sonata_profile_content %}
+    {% include "ComurImageBundle:Form:croppable_image_modal.html.twig" with {'include_jquery': false, 'include_bootstrap': false} %}
+
+    {{ form(form) }}
+
+{% endblock %}

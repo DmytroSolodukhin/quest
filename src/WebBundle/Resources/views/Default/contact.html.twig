@@ -1,0 +1,29 @@
+{% extends "WebBundle::pagelayout.html.twig" %}
+
+{% block page_head_js %}
+    {{ parent() }}
+
+{% endblock %}
+
+{% block welcome %}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-10 col-md-offset-1">
+                <div class="row">
+                    {% for quest in quests %}
+                        <a href="{{ path('web_quest', {'id': quest.id}) }}">
+                            <div class="col-md-12 quest_block animated fadeInUpBig" style="background: url('/images/minotavr/1.jpeg')">
+                                <div class="{% if quest.inprogress %} inproggress {% else %}transparency{% endif %}"></div>
+                                <h2>{{ quest.title }} {% if quest.inprogress %} - В процессе разрабодки{% endif %}</h2>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

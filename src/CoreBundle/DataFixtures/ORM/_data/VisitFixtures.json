@@ -1,0 +1,56 @@
+[
+  {
+    "referenceName": "01",
+    "id": 1,
+    "title": "11:00",
+    "price": "400"
+  },
+  {
+    "referenceName": "02",
+    "id": 2,
+    "title": "12:30",
+    "price": "400"
+  },
+  {
+    "referenceName": "03",
+    "id": 3,
+    "title": "14:00",
+    "price": "400"
+  },
+  {
+    "referenceName": "04",
+    "id": 4,
+    "title": "15:30",
+    "price": "400"
+  },
+  {
+    "referenceName": "05",
+    "id": 5,
+    "title": "17:00",
+    "price": "500"
+  },
+  {
+    "referenceName": "06",
+    "id": 6,
+    "title": "18:30",
+    "price": "500"
+  },
+  {
+    "referenceName": "07",
+    "id": 7,
+    "title": "20:00",
+    "price": "600"
+  },
+  {
+    "referenceName": "08",
+    "id": 8,
+    "title": "21:30",
+    "price": "600"
+  },
+  {
+    "referenceName": "09",
+    "id": 9,
+    "title": "23:00",
+    "price": "600"
+  }
+]

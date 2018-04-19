@@ -1,0 +1,34 @@
+{% extends "SonataUserBundle:Profile:action.html.twig" %}
+
+{% block sonata_profile_title %}
+    {{ parent() }} - {% trans from 'SonataUserBundle' %}title_edit_profile_organizations {% endtrans %}
+{% endblock %}
+
+{% block sonata_profile_content %}
+    {#<a href="">Создать новый квест <i class="icon-vk"></i></a>#}
+    <div class="row>">
+        {% for quest in quests %}
+            <div class="col-sm-12">
+                <a href="{{ path('admin_quest_edit',{'id': quest.id}) }}">
+                    <h3>
+                        {{ quest.title }}
+                    </h3>
+                </a>
+                <div>
+                    <p>
+                        <b>
+                            Для размещения  формы заказа на другом сайте - добавте на сайт данную строчку:
+                        </b>
+                    </p>
+                    <p>
+                        <b>
+                            &lt;iframe src"{{ url('web_quest_frame', { 'id': quest.id }) }}"  width="100%" height="511px"&gt;
+                        </b>
+                    </p>
+
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+{% endblock %}

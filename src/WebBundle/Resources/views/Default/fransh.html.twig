@@ -1,0 +1,40 @@
+{% extends "WebBundle::pagelayout.html.twig" %}
+        {% block title %}
+            <title>
+                Франшиза от Occulto
+            </title>
+        {% endblock %}
+{% block metateg %}
+    <meta name="description" content="франшиза, помощь при создании квест комнаты">
+    <meta name="keywords" content="франшиза, создание, механизмы, квест, комната, квеструм, загадки" />
+{% endblock %}
+
+{% block page_head_js %}
+    {{ parent() }}
+{% endblock %}
+
+{% block welcome %}
+{% endblock %}
+
+{% block content %}
+<section>
+    <div class="index_text_block_quest row" id="first">
+        <div  class="col-lg-10 col-lg-offset-1 quest_blocks">
+            <h1>Франшиза от Occulto</h1>
+            <p>
+                Мы рады помочь всем, кто решил открыть данный вид бизнеса. Так как в этой сфере практически отсутствует конкуренция,
+                он становится все более популярным, но и требования посетителей становятся всё более изощренными. Имея опыт и команду профессионалов,
+                мы поможет вам с механизмами, электроникой, строительством, декорациями и сценарием. Создайте свой мир, с помощью Occulto Quests.
+            </p>
+
+            <p>
+                По всем вопросам, касаемо франшизы или сотрудничества, пишите нам на почту, мы вам с удовольствием ответим:
+                <a href="mailto:occulto.quests@gmail.com" title="почта">
+                    <i class="icon-envelope"></i>
+                    occulto.quests@gmail.com
+                </a>
+            </p>
+        </div>
+    </div>
+</section>
+{% endblock %}

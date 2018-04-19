@@ -1,0 +1,45 @@
+{% extends "WebBundle::pagelayout.html.twig" %}
+        {% block title %}
+            <title>
+                Акции и скидки в квест комнаты Occulto
+            </title>
+        {% endblock %}
+{% block metateg %}
+    <meta name="description" content="акции в квест комнаты Occulto">
+    <meta name="keywords" content="акции, скидки, квест, игра, загадки, лабиринт, головоломки, комната, квеструм, эскейпрум" />
+{% endblock %}
+
+{% block page_head_js %}
+    {{ parent() }}
+{% endblock %}
+
+{% block welcome %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div  class="col-lg-10 col-lg-offset-1 quest_blocks animated fadeInUpBig" id="HeadSale">
+        <h1>Occulto запускает Акции</h1>
+        <h3>следите так же за проводимыми акциями в соц. сетях
+            <a target="_blank" title="facebook" href="https://www.facebook.com/groups/1516653968364799/">
+                <i class="icon-facebook"></i>
+            </a>
+            <a target="_blank" title="vk" href="https://vk.com/occulto_quest">
+                <i class="icon-vk"></i>
+            </a>
+        </h3>
+    </div>
+    <div id="Akcii">
+    {% for akciya in akcii %}
+        <div class="col-lg-10 col-lg-offset-1 quest_blocks"
+             style="background: #000000 none repeat scroll 0 0;">
+            <h2 style="color: #FFFFFF;">Акция: {{ akciya.title }}</h2>
+            {% if akciya.image %}
+            <img src="/uploads/{{ akciya.image }}" alt="акция квест {{ akciya.title }}" style="height: 250px; float: left; margin: 20px;">
+            {% endif %}
+            {{ akciya.description|raw }}
+        </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}

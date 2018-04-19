@@ -1,0 +1,20 @@
+{% extends "SonataUserBundle:Profile:action.html.twig" %}
+
+{% block sonata_profile_title %}
+    {{ parent() }} - {% trans from 'SonataUserBundle' %}title_edit_profile_organizations {% endtrans %}
+{% endblock %}
+
+{% block sonata_profile_content %}
+    <div class="row>">
+    {% for quest in quests %}
+        <div class="col-sm-4">
+            <a href="{{ path('admin_quest_zakaz',{'id': quest.id}) }}">
+                <h3>
+                    {{ quest.title }}
+                </h3>
+            </a>
+        </div>
+
+    {% endfor %}
+    </div>
+{% endblock %}

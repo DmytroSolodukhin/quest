@@ -1,0 +1,37 @@
+my_quest:
+    path:     /quest/edit
+    defaults: { _controller: WebBundle:Customer:questEdit }
+
+my_time:
+    path:     /time/edit
+    defaults: { _controller: WebBundle:Customer:timeEdit }
+
+my_stat:
+    path:     /statistic
+    defaults: { _controller: WebBundle:Customer:statistic }
+
+my_gallery:
+    path:     /my_gallery/{id}
+    defaults: { _controller: WebBundle:Customer:gallery }
+    requirements:
+        id: \d+
+
+my_set_zakaz:
+    path:     /bron/quest
+    defaults: { _controller: WebBundle:Customer:bronQuests }
+
+admin_quest_zakaz:
+    path:     /zakaz/{id}
+    defaults: { _controller: WebBundle:Customer:zakazQuest }
+    requirements:
+        id: \d+
+
+admin_quest_edit:
+    path:     /quest_edit/{id}
+    defaults: { _controller: WebBundle:Customer:editQuest }
+    requirements:
+        id: \d+
+
+my_mail:
+    path:     /mail
+    defaults: { _controller: WebBundle:Customer:myMail }

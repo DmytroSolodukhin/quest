@@ -1,0 +1,7 @@
+AuthType Basic
+AuthName "/www/quest/web/webstat"
+AuthUserFile /var/www/user2967/data/etc/27361502.passwd
+DirectoryIndex index.html
+<Limit GET POST>
+	require valid-user
+</Limit>

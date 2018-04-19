@@ -1,0 +1,91 @@
+{% extends "WebBundle::pagelayout.html.twig" %}
+        {% block title %}
+            <title>
+                Квест комнаты Oculto
+            </title>
+        {% endblock %}
+{% block metateg %}
+    <meta name="description" content="лучшие квест комнаты, {% for quest in quests %}{{ quest.title }}, {% endfor %}">
+    <meta name="keywords" content="{% for quest in quests %}{{ quest.title }}, {% endfor %}квест, игра, загадки, лабиринт, головоломки, комната, квеструм, эскейпрум" />
+{% endblock %}
+
+{% block page_head_js %}
+    {{ parent() }}
+{% endblock %}
+
+{% block welcome %}
+{% endblock %}
+
+{% block content %}
+<section>
+    <div class="row">
+    <div id="Quests">
+        <section>
+            <div class="col-lg-2 col-lg-offset-10 fadeInUpBig filters_city">
+                <p>Города:
+                    <select>
+                        <option value="">Все</option>
+                        {% for cit in city %}
+                            <option value="{{ cit.id }}">{{ cit.title }}</option>
+                        {% endfor %}
+                    </select>
+                </p>
+            </div>
+        {% for quest in quests %}
+            {% if not quest.inprogress %}
+                <div class="col-lg-4 quest_blocks animated fadeInUpBig"
+                     style="min-height: 250px; background: url('/uploads/{% if quest.background %}{{ quest.background }}{% else %}{{ quest.image }}{% endif %}') repeat 0 0 scroll; background-size: contain;">
+                    <a href="{{ path('web_quest', {'id': quest.id}) }}"  title="{{ quest.title }}">
+                        <div class="options_q">
+
+                            <strong style="float: right; margin: -5px 0 0;">
+                                Cложность :
+                                {% for i in 0..4 %}
+                                    {% if i <= quest.complexity %}
+                                        <img src="/images/omega.png" width="20px" alt="{{ quest.title }} big complexity">
+                                    {% endif %}
+                                {% endfor %}
+                            </strong>
+                        </div>
+                        <div class="transparency"></div>
+                    {#<strong>{{ quest.city.title }}</strong>#}
+                    <h2>{{ quest.title }}</h2>
+
+                    {#{% if quest.description|length > 300 %}{{ quest.description|slice(0, 300)|raw }}...</p>{% else %}#}
+                        {#{{  quest.description|raw}}#}
+                    {#{% endif %}#}
+                        <div class="options_q_footer">
+                            <strong style="float: right"><i class="icon-user" style="color: white"></i> : 2-{{ quest.count }}{% if quest.maxCount %}({{ quest.maxCount }}){% endif %}</strong>
+                        </div>
+                      </div>
+                    </a>
+                </div>
+            {% else %}
+                <div class="col-lg-4 quest_blocks animated fadeInUpBig todown t2"
+                     style="min-height: 250px; background: url({% if quest.background %}'/uploads/{{ quest.background }}'{% elseif quest.image %}'/uploads/{{ quest.image }}'{% else %}'/images/logo/logo_w.png'{% endif %}) repeat 0 0 scroll;
+                     background-size: contain; opacity: 0.78;">
+                    <div class="inproggress" style="min-height: 250px;"></div>
+                    <h2>{{ quest.title }}.
+                        {% if quest.inprogress %}
+                            {% if quest.startTime %}
+                                Открытие квеста ({{ quest.startTime|date('d/m/y') }})
+                            {% else %}
+                                Этот квест в процессе разработки
+                            {% endif %}
+                        {% endif %}
+                    </h2>
+                </div>
+            {% endif %}
+        {% endfor %}
+        </section>
+    </div>
+</div>
+</section>
+{% endblock %}
+
+{% block footer_js %}
+    {{ parent() }}
+    <script>
+        $('#Quests .todown').remove().appendTo('#Quests');
+    </script>
+{% endblock %}

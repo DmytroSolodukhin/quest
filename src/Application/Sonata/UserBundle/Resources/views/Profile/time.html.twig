@@ -1,0 +1,93 @@
+{% extends "SonataUserBundle:Profile:action.html.twig" %}
+
+{% block sonata_profile_title %}
+    {{ parent() }} - {% trans from 'SonataUserBundle' %}title_edit_profile_organizations {% endtrans %}
+{% endblock %}
+
+{% block sonata_profile_content %}
+    <h1>Ждут звонка</h1>
+    <div class="row">
+        <div class="col-sm-4">
+            <h4>Квест</h4>
+        </div>
+        <div class="col-sm-4">
+            <h4>Число</h4>
+        </div>
+        <div class="col-sm-4">
+            <h4>Время</h4>
+        </div>
+    </div>
+    <div id="accordion" role="tablist" aria-multiselectable="true">
+        {% for quest in quests %}
+            {% if not quest.inprogress %}
+                {% for zakaz in quest.time %}
+                    <div class="row zakaz_{{ zakaz.id }} {% if zakaz.inprogress %}admintable{% else %}admin_inprogress{% endif %}">
+                        <div class="panel-heading" role="tab" id="heading_{{ zakaz.id }}">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion"
+                               data-target="#collapse_{{ zakaz.id }}">
+                                <div class="col-sm-4">
+                                    <div class="admin_big">{{ quest.title }}</div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="admin_big">{{ zakaz.open|date('d/m/y') }}</div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="admin_big">{{ zakaz.visit.title }}</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div id="collapse_{{ zakaz.id }}" class="collapse" aria-labelledby="heading_{{ zakaz.id }}">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <div class="admin_big">Тел: {{ zakaz.phone }}</div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="admin_big">Имя: {{ zakaz.title }}</div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="admin_big">Cтоимость: {{ zakaz.price }}</div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="admin_big">кол-во: {{ zakaz.count }}</div>
+                                    </div>
+                                    <div class="col-sm-3 control_btn">
+                                        {% if zakaz.inprogress %}
+                                        {% else %}
+                                            <button onclick="successTime({{ zakaz.id }})" class="btn btn-success">
+                                                Обработано
+                                            </button>
+                                        {% endif %}
+                                        <button onclick="removeTime({{ zakaz.id }})" class="btn btn-danger">
+                                            Удалить
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+        <hr>
+        <h1>Обработанные</h1>
+         <div class="row">
+            <div class="col-sm-4">
+                <h4>Квест</h4>
+            </div>
+            <div class="col-sm-4">
+                <h4>Число</h4>
+            </div>
+            <div class="col-sm-4">
+                <h4>Время</h4>
+            </div>
+        </div>
+        <div id="history_time">
+
+        </div>
+    </div>
+{% endblock %}
+{% block footer_js %}
+    {{ parent() }}
+    <script src="/js/time_admin.js"></script>
+{% endblock %}

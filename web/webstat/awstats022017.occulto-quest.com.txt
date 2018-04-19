@@ -1,0 +1,329 @@
+AWSTATS DATA FILE 7.1 (build 1.983)
+# If you remove this file, all statistics for date 201702 will be lost/reset.
+# Last config file used to build this data file was /etc/awstats/awstats.occulto-quest.com.conf.
+
+# Position (offset in bytes) in this file for beginning of each section for
+# direct I/O access. If you made changes somewhere in this file, you should
+# also remove completely the MAP section (AWStats will rewrite it at next
+# update).
+BEGIN_MAP 27
+POS_GENERAL 1997                
+POS_TIME 2670                
+POS_VISITOR 7355                
+POS_DAY 8465                
+POS_DOMAIN 3279                
+POS_LOGIN 3510                
+POS_ROBOT 3665                
+POS_WORMS 3997                
+POS_EMAILSENDER 4128                
+POS_EMAILRECEIVER 4271                
+POS_SESSION 8550                
+POS_SIDER 8756                
+POS_FILETYPES 4406                
+POS_DOWNLOADS 4627                
+POS_OS 4675                
+POS_BROWSER 4822                
+POS_SCREENSIZE 5109                
+POS_UNKNOWNREFERER 5183                
+POS_UNKNOWNREFERERBROWSER 5270                
+POS_ORIGIN 5352                
+POS_SEREFERRALS 5489                
+POS_PAGEREFS 5655                
+POS_SEARCHWORDS 5916                
+POS_KEYWORDS 6068                
+POS_MISC 2333                
+POS_ERRORS 6127                
+POS_CLUSTER 3366                
+POS_SIDER_404 6258                
+END_MAP
+
+# LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value
+# FirstTime   = Date of first visit for history file
+# LastTime    = Date of last visit for history file
+# LastUpdate  = Date of last update - Nb of parsed records - Nb of parsed old records - Nb of parsed new records - Nb of parsed corrupted - Nb of parsed dropped
+# TotalVisits = Number of visits
+# TotalUnique = Number of unique visitors
+# MonthHostsKnown   = Number of hosts known
+# MonthHostsUnKnown = Number of hosts unknown
+BEGIN_GENERAL 8
+LastLine 20170301001552 1 0 11955324544865
+FirstTime 20170228111118
+LastTime 20170228235928
+LastUpdate 20170301010141 1 0 0 0 0
+TotalVisits 31                  
+TotalUnique 25                  
+MonthHostsKnown 0                   
+MonthHostsUnknown 25                  
+END_GENERAL
+
+# Misc ID - Pages - Hits - Bandwidth
+BEGIN_MISC 10
+QuickTimeSupport 0 0 0
+JavaEnabled 0 0 0
+JavascriptDisabled 0 0 0
+PDFSupport 0 0 0
+WindowsMediaPlayerSupport 0 0 0
+AddToFavourites 0 12 0
+RealPlayerSupport 0 0 0
+TotalMisc 0 0 0
+DirectorSupport 0 0 0
+FlashSupport 0 0 0
+END_MISC
+
+# Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth
+BEGIN_TIME 24
+0 0 0 0 0 0 0
+1 0 0 0 0 0 0
+2 0 0 0 0 0 0
+3 0 0 0 0 0 0
+4 0 0 0 0 0 0
+5 0 0 0 0 0 0
+6 0 0 0 0 0 0
+7 0 0 0 0 0 0
+8 0 0 0 0 0 0
+9 0 0 0 0 0 0
+10 0 0 0 0 0 0
+11 16 90 6658874 16 25 12115
+12 33 173 7630768 5 23 2422
+13 13 73 11846257 1 3 832
+14 9 49 2982135 3 7 9133
+15 4 37 3338239 2 3 9878
+16 2 18 384451 0 0 0
+17 10 62 4323184 4 6 28560
+18 27 44 194305 2 4 8964
+19 3 25 5454704 2 6 17252
+20 5 48 3420783 0 0 0
+21 3 24 3828020 0 3 451
+22 7 41 4847823 0 1 319
+23 5 45 6267030 2 3 8432
+END_TIME
+
+# Domain - Pages - Hits - Bandwidth
+# The 10 first Pages must be first (order not required for others)
+BEGIN_DOMAIN 1
+ip 137 729 61176573
+END_DOMAIN
+
+# Cluster ID - Pages - Hits - Bandwidth
+BEGIN_CLUSTER 0
+END_CLUSTER
+
+# Login - Pages - Hits - Bandwidth - Last visit
+# The 10 first Pages must be first (order not required for others)
+BEGIN_LOGIN 0
+END_LOGIN
+
+# Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt
+# The 10 first Hits must be first (order not required for others)
+BEGIN_ROBOT 6
+googlebot 9 35888 20170228231818 1
+ia_archiver 4 28564 20170228193243 2
+yandex 4 7684 20170228234409 2
+facebook 1 3470 20170228112253 0
+favicon 1 3861 20170228141816 0
+bingbot 1 3861 20170228170914 0
+END_ROBOT
+
+# Worm ID - Hits - Bandwidth - Last visit
+# The 5 first Hits must be first (order not required for others)
+BEGIN_WORMS 0
+END_WORMS
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first Hits must be first (order not required for others)
+BEGIN_EMAILSENDER 0
+END_EMAILSENDER
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first hits must be first (order not required for others)
+BEGIN_EMAILRECEIVER 0
+END_EMAILRECEIVER
+
+# Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression
+BEGIN_FILETYPES 8
+css 137 821502 0 0
+png 155 44129845 0 0
+woff2 2 89924 0 0
+woff 14 622048 0 0
+html 31 116516 0 0
+js 229 4218913 0 0
+jpg 71 10859585 0 0
+Unknown 90 318240 0 0
+END_FILETYPES
+
+# Downloads - Hits - Bandwidth
+BEGIN_DOWNLOADS 0
+END_DOWNLOADS
+
+# OS ID - Hits
+BEGIN_OS ID - Hits - Pages 6
+macosx 151 21
+linuxandroid 127 17
+winxp 2 2
+linux 323 58
+winvista 40 4
+win7 86 35
+END_OS
+
+# Browser ID - Hits - Pages
+BEGIN_BROWSER 12
+firefox50.0 214 40
+msie8.0 1 1
+chrome45.0.2454.94 9 1
+chrome11.0.696.68 1 1
+android 20 2
+chrome53.0.2785.116 35 5
+firefox51.0 16 1
+safari10.0 123 15
+chrome34.0.1847.118 16 1
+safari10.0.3 28 6
+chrome56.0.2924.87 208 52
+firefox45.0 58 12
+END_BROWSER
+
+# Screen size - Hits
+BEGIN_SCREENSIZE 0
+END_SCREENSIZE
+
+# Unknown referer OS - Last visit date
+BEGIN_UNKNOWNREFERER 0
+END_UNKNOWNREFERER
+
+# Unknown referer Browser - Last visit date
+BEGIN_UNKNOWNREFERERBROWSER 0
+END_UNKNOWNREFERERBROWSER
+
+# Origin - Pages - Hits 
+BEGIN_ORIGIN 6
+From0 12 12
+From1 0 0
+From2 4 4
+From3 22 22
+From4 99 691
+From5 0 0
+END_ORIGIN
+
+# Search engine referers ID - Pages - Hits
+BEGIN_SEREFERRALS 2
+google 3 3
+yandex 1 1
+END_SEREFERRALS
+
+# External page referers - Pages - Hits
+# The 10 first Pages must be first (order not required for others)
+BEGIN_PAGEREFS 4
+http://salikquest.com.ua 14 14
+http://m.vk.com/away.php 4 4
+http://m.facebook.com 2 2
+http://vk.com/away.php 2 2
+END_PAGEREFS
+
+# Search keyphrases - Number of search
+# The 10 first number of search must be first (order not required for others)
+BEGIN_SEARCHWORDS 0
+END_SEARCHWORDS
+
+# Search keywords - Number of search
+# The 10 first number of search must be first (order not required for others)
+BEGIN_KEYWORDS 0
+END_KEYWORDS
+
+# Errors - Hits - Bandwidth
+BEGIN_ERRORS 5
+302 6 1173
+206 1 3864
+500 12 3552
+301 3 651
+404 30 1962
+END_ERRORS
+
+# URL with 404 errors - Hits - Last URL referer
+BEGIN_SIDER_404 9
+/cpanel 1 http://www.google.com
+/uploads/cropped/c36df6ab8333520075343463f221f763790ea947.jpg 5 http://occulto-quest.com/
+/uploads/cropped/thumbnails/400x600-d29fc924d2f1b539ddf6a781158117f71068729d.png 2 http://occulto-quest.com/admin/core/quest/5/edit
+/uploads/cropped/2bf6be0ab34361115a370e590f5ed4b4cac26f8e.png 2 http://occulto-quest.com/sale
+/uploads/cropped/0e81501c84433244eaf58b007664b83acaf9e14c.png 2 http://occulto-quest.com/sale
+/uploads/cropped/thumbnails/400x600-c36df6ab8333520075343463f221f763790ea947.jpg 6 http://occulto-quest.com/admin/core/quest/5/edit
+/favicon.png 1 http://occulto-quest.com/my/zakaz/4
+/js/7c6d010.js 8 http://occulto-quest.com/admin/core/quest/5/edit
+/uploads/cropped/d29fc924d2f1b539ddf6a781158117f71068729d.png 3 http://occulto-quest.com/quest/5
+END_SIDER_404
+
+# Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]
+# [Start date of last visit] and [Last page of last visit] are saved only if session is not finished
+# The 10 first Hits must be first (order not required for others)
+BEGIN_VISITOR 25
+193.8.201.1 35 189 4469210 20170228162951
+91.90.13.129 30 44 3226803 20170228184123
+195.138.83.92 12 58 7086047 20170228131057
+46.133.243.19 6 24 3143411 20170228112401
+109.200.224.180 6 28 3540837 20170228173711
+78.26.151.227 5 25 3209610 20170228111144
+78.26.144.10 5 35 521506 20170228181900
+85.238.102.245 5 36 4704689 20170228223719
+46.185.83.217 4 26 3535047 20170228222913
+91.4.119.182 3 25 5454704 20170228194320
+46.211.153.84 1 16 381076 20170228140428
+37.73.240.185 2 20 2953302 20170228152542
+92.60.177.109 1 16 381076 20170228153451
+46.188.88.228 1 1 3861 20170228150644
+91.90.13.124 1 16 381076 20170228203536
+91.195.10.188 3 24 3828020 20170228210450
+46.133.167.13 2 15 2501985 20170228131659
+46.133.222.235 2 20 1765229 20170228145729
+79.142.196.240 2 20 2737340 20170228231726
+79.142.196.156 1 16 381076 20170228164843
+208.80.194.124 1 1 17022 20170228170441
+79.140.9.231 2 17 384249 20170228180306
+195.138.79.235 3 23 2957285 20170228202803
+31.31.97.212 3 25 3529690 20170228235928
+37.73.210.29 1 9 82422 20170228203052
+END_VISITOR
+
+# Date - Pages - Hits - Bandwidth - Visits
+BEGIN_DAY 1
+20170228 137 729 61176573 31
+END_DAY
+
+# Session range - Number of visits
+BEGIN_SESSION 7
+1h+ 1
+5mn-15mn 2
+15mn-30mn 1
+0s-30s 17
+30s-2mn 6
+2mn-5mn 3
+30mn-1h 1
+END_SESSION
+
+# URL - Pages - Bandwidth - Entry - Exit
+# The 10 first Pages must be first (order not required for others)
+BEGIN_SIDER 26
+/ 29 112149 14 3
+/quest/frame/4 16 64631 10 10
+/fonts/fontawesome-webfont.woff 14 622048 0 3
+/quest/5 13 68590 2 4
+/restapi/time 9 309 1 0
+/quest/4 8 42971 2 3
+/js/routing 8 1640 0 2
+/quests 6 20084 1 2
+/admin/core/quest/5/edit 4 57550 0 0
+/image-library 3 1711 0 0
+/restapi/reserved 3 109 0 1
+/admin/core/quest/list 2 15163 1 0
+/admin/dashboard 1 5033 0 0
+/restapi/remove_time 1 36 0 0
+/upload 2 399 0 0
+/crop 3 487 0 0
+/rules 1 4124 0 0
+/sale 2 8404 0 2
+/bundles/sonatacore/vendor/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2 1 18028 0 0
+/bundles/sonatacore/vendor/components-font-awesome/fonts/fontawesome-webfont.woff2 1 71896 0 0
+/profile/ 2 4367 0 0
+/my/zakaz/4 1 3668 0 0
+/login 1 2004 0 1
+/admin/login 1 3333 0 0
+/my/time/edit 2 11264 0 0
+/my/bron/quest 3 6730 0 0
+END_SIDER

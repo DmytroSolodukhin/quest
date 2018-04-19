@@ -1,0 +1,31 @@
+{% extends "WebBundle::pagelayout.html.twig" %}
+        {% block title %}
+            <title>
+                Вакансии от Occulto
+            </title>
+        {% endblock %}
+{% block metateg %}
+    <meta name="description" content="работа Occulto">
+    <meta name="keywords" content="работа в Occulto" />
+{% endblock %}
+
+{% block page_head_js %}
+    {{ parent() }}
+{% endblock %}
+
+{% block welcome %}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div  class="col-lg-10 col-lg-offset-1 quest_blocks animated fadeInUpBig"
+              style="background: rgba(0,0,0, 0.7); top: 30vh; position: fixed">
+            <h1>Работа в Occulto</h1>
+            <h3>
+                Дорогие друзья, мы ищем оператора, мы предлагаем спокойную работу с гибким графиком и дружным коллективом.
+                По всем вопросам трудоустройства, обращайтесь по номеру тел:
+                <a href="tel:+380632000282" title="телефон" style="color: white"><i class="icon-phone"></i>(063)2000-282</a>
+            </h3>
+        </div>
+    </div>
+{% endblock %}

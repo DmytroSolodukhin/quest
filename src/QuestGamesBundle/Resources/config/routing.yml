@@ -1,0 +1,5 @@
+quest_games_model:
+    resource: "@QuestGamesBundle/Controller/DefaultController.php"
+    type:     rest
+    prefix:   /
+    defaults: {_format: json}

@@ -1,0 +1,15 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: quest
+    database_user: quest
+    database_password: s0pelk132
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    secret: ThisTokenIsNotSoSecretChangeIt
+    locale: ru
+    locales:
+        - ru

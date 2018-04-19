@@ -1,0 +1,1 @@
+a:7:{s:15:"admin.rule.list";s:20:"admin_core_rule_list";s:17:"admin.rule.create";s:22:"admin_core_rule_create";s:16:"admin.rule.batch";s:21:"admin_core_rule_batch";s:15:"admin.rule.edit";s:20:"admin_core_rule_edit";s:17:"admin.rule.delete";s:22:"admin_core_rule_delete";s:15:"admin.rule.show";s:20:"admin_core_rule_show";s:17:"admin.rule.export";s:22:"admin_core_rule_export";}

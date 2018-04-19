@@ -1,0 +1,92 @@
+{% extends "WebBundle::pagelayout.html.twig" %}
+        {% block title %}
+            <title>
+                Карта квестов от Occulto
+            </title>
+        {% endblock %}
+{% block metateg %}
+    <meta name="description" content="Карта квестов от Occulto">
+    <meta name="keywords" content="Карта квестов, квест, комната, квеструм, загадки" />
+{% endblock %}
+
+{% block page_head_js %}
+    {{ parent() }}
+{% endblock %}
+
+{% block welcome %}
+{% endblock %}
+
+{% block content %}
+<section>
+    <div class="map_block quest_blocks" style="height: auto; width: 100%; min-width: 200px; margin: auto">
+        <div id="map"></div>
+        <script type="application/javascript">
+            var quests = [], k = 0;
+            {% for quest in quests %}
+                {% if quest.lat %}
+
+                    quests[k] = {
+                        title: '{{ quest.title }}',
+                        lat: {{ quest.lat }},
+                        lng: {{ quest.lng }},
+                        image: '{{ quest.image }}',
+                        href: "{{ path('web_quest', {'id': quest.id}) }}"
+                    };
+                    k++;
+                {% endif %}
+            {% endfor %}
+            var infowindow = [], marker = [];
+
+            function initMap() {
+                var myLatlng = new google.maps.LatLng({lat: quests[0].lat, lng: quests[0].lng });
+                var myOptions = {
+                    zoom: 14,
+                    center: myLatlng,
+                    scaleControl: false
+                };
+                var map = new google.maps.Map(document.getElementById("map"), myOptions);
+                setMarkers(map);
+            };
+
+
+            function setMarkers(map) {
+
+                for (var i = 0; i < quests.length; i++) {
+
+                    infowindow[i] = new google.maps.InfoWindow({
+                        content: '<a href="'+quests[i].href+'"><img width="100" src="../../../uploads/'+ quests[i].image +'">' +
+                        '<h1 style="color: Black">'+quests[i].title+'</h1></a>'
+                    });
+
+                    marker[i] = new google.maps.Marker({
+                                position: {
+                                    lat: quests[i].lat, lng: quests[i].lng
+                                },
+                                map: map,
+                                title: quests[i].title
+                            });
+
+                    google.maps.event.addListener(marker[i], 'click', function(data) {
+                        for (var i = 0; i < marker.length; i++){
+                            infowindow[i].close();
+                            if (data.latLng ==  marker[i].position) {
+                                infowindow[i].open(map, marker[i]);
+                            }
+                        }
+
+                    });
+                    marker[i].setMap(map);
+                }
+            }
+
+
+        </script>
+    </div>
+</section>
+{% endblock %}
+
+{% block footer_js %}
+    {{ parent() }}
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkv7_FSpAnqo33hmL_QTq-ONNxStvPsdU&callback=initMap"
+        async defer></script>
+{% endblock %}

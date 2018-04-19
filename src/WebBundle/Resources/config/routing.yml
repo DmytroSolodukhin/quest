@@ -1,0 +1,67 @@
+more_role_page:
+    resource: "@WebBundle/Resources/config/admin.yml"
+    prefix:   /my/
+
+web_homepage:
+    path:     /
+    defaults: { _controller: WebBundle:Default:index }
+
+web_quests:
+    path:     /quests
+    defaults: { _controller: WebBundle:Default:quests }
+
+web_quest:
+    path:     /quest/{id}
+    defaults: { _controller: WebBundle:Default:quest }
+    requirements:
+        id: \d+
+
+web_quest_frame:
+    path:     /quest/frame/{id}
+    defaults: { _controller: WebBundle:Default:questFrame }
+    requirements:
+        id: \d+
+
+web_akcii:
+    path:     /sale
+    defaults: { _controller: WebBundle:Default:akcii }
+
+web_rules:
+    path:     /rules
+    defaults: { _controller: WebBundle:Default:rules }
+
+web_gallerey:
+    path:     /gallerey
+    defaults: { _controller: WebBundle:Default:gallerey }
+
+web_fransh:
+    path:     /franshiza
+    defaults: { _controller: WebBundle:Default:fransh }
+
+web_map:
+    path:     /map
+    defaults: { _controller: WebBundle:Default:map }
+
+web_work:
+    path:     /work
+    defaults: { _controller: WebBundle:Default:work }
+
+web_contact:
+    path:     /contact
+    defaults: { _controller: WebBundle:Default:contact }
+
+web_cat:
+    path:     /category/{id}
+    defaults: { _controller: WebBundle:Default:category }
+    requirements:
+        id: \d+
+
+web_cat_pechi:
+    path:     /category_pechi/{id}
+    defaults: { _controller: WebBundle:Default:categoryPechi}
+    requirements:
+        id: \d+
+
+my_mail:
+    path:     /my/mail
+    defaults: { _controller: WebBundle:Customer:myMail }

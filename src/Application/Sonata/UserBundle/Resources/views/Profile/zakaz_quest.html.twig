@@ -1,0 +1,156 @@
+{% extends "SonataUserBundle:Profile:action.html.twig" %}
+
+{% block sonata_profile_title %}
+    {{ parent() }} - {% trans from 'SonataUserBundle' %}title_edit_profile_organizations {% endtrans %}
+{% endblock %}
+
+{% block sonata_profile_content %}
+    <div class="row">
+
+        <div id="visit_table">
+            <div id="mounth_visit" data-bind="foreach: mounthList()">
+                <div class="row">
+                    <div class="col-sm-2 quest_table_name">
+                        <h4 data-bind="text: value.date+' '+value.title+' - '+value.name">
+                        </h4>
+                    </div>
+                    <div class="select_time" data-bind="foreach: $parent.respArray(value.mounth+'_'+value.date+'_'+value.year)">
+                        <div class="col-lg-1" style="padding: 0">
+                            <button class="admin_c" data-bind="css: { 'reserved': selected }, click: $root.selectVisit($parent.value.mounth+'_'+$parent.value.date+'_'+$parent.value.year, id)">
+                                <div data-bind="text:title"></div>
+                                <div class="price" data-bind="text: price+' грн'">
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
+        </br></br>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <div id="billing_popup" data-bind="visible: showBilling()">
+
+
+        <h2>{{ quest.title }}</h2>
+        <div class="closePopup" data-bind="click: closePopup()">X</div>
+        <h3>
+            Время: <span class="curentTime" data-bind="text: curentPrice().title"></span> /
+            День:  <span class="curentDate" data-bind="text: curentDate()"></span>
+        </h3>
+
+        <form id="Reservation" data-bind="submit: sendReserv">
+                    <div class="col-lg-4">
+                        <fieldset>
+
+                        <label for="Phone">Телефон:</label>
+                        <input type="tel" id="Phone" data-bind="value: phone" name="phone" placeholder="(063)1392958">
+                        <br>
+                        <label for="Name">Имя:</label>
+                        <input type="text" id="Name" data-bind="value: name" name="name" placeholder="Дмитрий">
+                        <br>
+                        </fieldset>
+
+                    </div>
+                    <div class="col-lg-4">
+                        <fieldset>
+
+                        <label for="Phone">Цена:</label>
+                        <input type="number" id="Price" data-bind="value: price" autocomplete="off">
+                        <br>
+                        <label for="description">Количество человек:</label>
+                        <input type="number" id="numberUser" data-bind="value: count"  max="{{ quest.maxCount }}" autocomplete="off">
+                        </fieldset>
+
+                    </div>
+                    <div class="col-lg-4" style="padding: 6% 0;;">
+                        <fieldset>
+
+                        <!-- ko if: !!curentPrice().select_id -->
+                        <button data-bind="click: removeTime, visible: curentPrice().select_id" class="btn btn-danger">
+                            Удалить
+                        </button>
+
+                        <!-- /ko -->
+
+                        <!-- ko if: !!!curentPrice().select_id -->
+                        <input type="submit" value="Заказать">
+                        <!-- /ko -->
+                        </fieldset>
+
+                    </div>
+        </form>
+    </div>
+
+    <div id="success">
+        <h1>{{ quest.title }}</h1>
+        <div class="closePopup" data-bind="click: closeSuccessPopup">X</div>
+        <hr>
+        <h1>
+            Записано!
+        </h1>
+    </div>
+
+    <div id="errorSuccess">
+        <h1>{{ quest.title }}</h1>
+        <div class="closePopup" data-bind="click: closeerrorSuccess">X</div>
+        <hr>
+        <h2 data-bind="text: error()">
+        </h2>
+    </div>
+    </div>
+{% endblock %}
+{% block footer_js %}
+{{ parent() }}
+<script src="/js/knockout-3.4.0.js"></script>
+<script src="/js/admin_visit_table.js"></script>
+
+    <script>
+    var time_visit = [],
+            visit = [],
+            params = {
+                maxCount: {{ quest.maxCount }},
+                count: {{ quest.count }},
+                pay: {{ quest.plusPay }},
+                primeDate: []
+            };
+
+    {% for pdate in quest.primeDate %}
+        params.primeDate.push({
+            date: "{{ pdate.date|date('n_j_Y') }}",
+            price: {{ pdate.price }}
+    });
+    {% endfor %}
+
+
+    {% for time_visit in quest.time %}
+
+    time_visit.push({
+        date: '{{ time_visit.open|date("n_j_Y") }}',
+        name: '{{ time_visit.title }}',
+        id_visit: '{{ time_visit.visit.id }}',
+        time: '{{ time_visit.visit.title }}',
+        id: '{{ time_visit.id }}',
+        title: '{{ time_visit.title }}',
+        phone: '{{ time_visit.phone }}',
+        count: {{ time_visit.count }},
+        price: {{ time_visit.price }}
+    });
+    {% endfor %}
+
+    {% for open in quest.open %}
+    visit.push({
+        id: {{ open.id }},
+        title: '{{ open.title }}',
+        price: {{ open.price }}
+    });
+
+
+    {% endfor %}
+    ko.applyBindings(new TableVisitViewModel(time_visit, visit, {{ quest.id }}, params));
+</script>
+{% endblock %}

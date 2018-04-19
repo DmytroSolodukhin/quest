@@ -1,0 +1,95 @@
+{% extends "WebBundle::pagelayout.html.twig" %}
+
+    {% block title %}
+        <title>
+            Квест комнаты Occulto Quests
+        </title>
+    {% endblock %}
+    {% block metateg %}
+        <meta name="description" content="лучшие квест комнаты Одессы, игра, квест комната, секрет и логика, интеллект и головоломки, интуиция, это все - occulto">
+        <meta name="keywords" content="Одесса, квест, {% for quest in quests %}{{ quest.title }}, {% endfor %}лабиринт, квест комната,
+labirint, игры квесты, квест одесса, квест игры, quest room, квест рум одесса" />
+    {% endblock %}
+
+{% block content %}
+<a class="scroll-down hidden-xs hidden-sm" href="#first"></a>
+
+
+
+<section>
+<div class="index_text_block" id="first">
+    <div class="row">
+        <div class="col-sm-10 col-md-offset-1 quest_block">
+            <h1>
+                Occulto Quests
+            </h1>
+            <p>Погружение в мир тайн и загадок. Соприкосновение с героями мифов и легенд.
+                Перенос в былые времена и эпохи. Раскрытие тайных замыслов и встреча с чудовищами,
+                борьба против себя самого, против своих страхов и фобий. Загадки и головоломки, поиск и удача,
+                подсказки и секреты, испытание логики и интуиции. Использование интеллекта как
+                самого необходимого инструмента, помощь друзей и командная игра. Все это — Occulto Quests.
+            </p>
+            <p>Погрузитесь в мир, cозданный для Вас - Occulto Quests!</p>
+        </div>
+    </div>
+</div>
+</section>
+
+<section>
+    <div class="first_block">
+    <div class="row" id="Quests">
+        {% for key, quest in quests %}
+        <section>
+            {% if not quest.inprogress %}
+                <a href="{{ path('web_quest', {'id': quest.id}) }}" title="{{ quest.title }}">
+                    <div class="col-sm-10 col-md-offset-1 quest_block"
+                         style="min-height: 250px; background: url('/uploads/{% if quest.background %}{{ quest.background }}{% else %}{{ quest.image }}{% endif %}') repeat 0 0 scroll; background-size: contain;">
+                        <div class="transparency"></div>
+                        <strong style="float: right"><i class="icon-user" style="color: white"></i> : 2-{{ quest.count }}{% if quest.maxCount %}({{ quest.maxCount }}){% endif %}</strong>
+
+                        <h3>
+                                {{ quest.city.title }}
+                        </h3>
+                        <h2>{{ quest.title }}</h2>
+                                <strong style="float: right; margin: 54px 0 0;">
+                                    Cложность :
+                                    {% for i in 0..4 %}
+                                        {% if i <= quest.complexity %}
+                                            <img src="/images/omega.png" width="30px" alt="{{ quest.title }} big complexity">
+                                        {% endif %}
+                                    {% endfor %}
+                                </strong>
+                        {#{% if quest.description|length > 300 %}{{ quest.description|slice(0, 300)|raw }}...</p>{% else %}#}
+                            {#{{  quest.description|raw}}#}
+                        {#{% endif %}#}
+                    </div>
+                </a>
+            {% else %}
+                <div class="col-sm-10 col-md-offset-1 quest_block {% if quest.inprogress %}todown{% endif %} t2"
+                     style="min-height: 250px; background: url({% if quest.background %}'/uploads/{{ quest.background }}'{% elseif quest.image %}'/uploads/{{ quest.image }}'{% else %}'/images/logo/logo_w.png'{% endif %}) repeat 0 0 scroll; background-size: contain; opacity: 0.78;">
+                    <div class="inproggress" style="min-height: 250px; "></div>
+                    <strong>{{ quest.city.title }}</strong>
+                    <h2>{{ quest.title }}.
+                        {% if quest.inprogress %}
+                            {% if quest.startTime %}
+                                Открытие квеста ({{ quest.startTime|date('d/m/y') }})
+                            {% else %}
+                                Этот квест в процессе разработки
+                                {% endif %}
+                        {% endif %}
+                    </h2>
+                </div>
+            {% endif %}
+        </section>
+        {% endfor %}
+    </div>
+</div>
+</section>
+{% endblock %}
+
+{% block footer_js %}
+    {{ parent() }}
+    <script>
+        $('#Quests .todown').remove().appendTo('#Quests');
+    </script>
+{% endblock %}

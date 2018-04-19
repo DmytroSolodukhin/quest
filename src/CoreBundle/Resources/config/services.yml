@@ -1,0 +1,121 @@
+parameters:
+    quest: CoreBundle\Entity\Quest
+    time: CoreBundle\Entity\Time
+    time_history: CoreBundle\Entity\TimeHistory
+    city: CoreBundle\Entity\City
+    gallery: CoreBundle\Entity\Gallery
+    rule: CoreBundle\Entity\Rule
+    visit: CoreBundle\Entity\Visit
+    akcii: CoreBundle\Entity\Akcii
+    type: CoreBundle\Entity\Type
+    pryme_day: CoreBundle\Entity\PrymeDay
+
+services:
+    quest.handler:
+        class: CoreBundle\Handler\QuestHandler
+        arguments: [@service_container, %quest%]
+    time.handler:
+        class: CoreBundle\Handler\TimeHandler
+        arguments: [@service_container, %time%]
+    time_history.handler:
+        class: CoreBundle\Handler\TimeHistoryHandler
+        arguments: [@service_container, %time_history%]
+    city.handler:
+        class: CoreBundle\Handler\CityHandler
+        arguments: [@service_container, %city%]
+    gallery.handler:
+        class: CoreBundle\Handler\GalleryHandler
+        arguments: [@service_container, %gallery%]
+    rule.handler:
+        class: CoreBundle\Handler\RuleHandler
+        arguments: [@service_container, %rule%]
+    visit.handler:
+        class: CoreBundle\Handler\VisitHandler
+        arguments: [@service_container, %visit%]
+    pryme_day.handler:
+        class: CoreBundle\Handler\PrymeDayHandler
+        arguments: [@service_container, %pryme_day%]
+    akcii.handler:
+        class: CoreBundle\Handler\AkciiHandler
+        arguments: [@service_container, %akcii%]
+
+    admin.quest:
+        class: CoreBundle\Admin\QuestAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm,  icon: '<i class="fa fa-gamepad"></i>', group: "Квесты", label: "Квесты" }
+        arguments:
+            - ~
+            - %quest%
+            - 'SonataAdminBundle:CRUD'
+
+    type.quest:
+        class: CoreBundle\Admin\TypeAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm,  icon: '<i class="fa fa-gamepad"></i>', group: "Квесты", label: "Тип" }
+        arguments:
+            - ~
+            - %type%
+            - 'SonataAdminBundle:CRUD'
+
+    akcii.quest:
+        class: CoreBundle\Admin\AkciiAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm,  icon: '<i class="fa fa-ticket"></i>', group: "Акции", label: "Акции", on_top: true }
+        arguments:
+            - ~
+            - %akcii%
+            - 'SonataAdminBundle:CRUD'
+
+    admin.time:
+        class: CoreBundle\Admin\TimeAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm,  icon: '<i class="fa fa-clock-o"></i>', group: "Время", label: "Время" }
+        arguments:
+            - ~
+            - %time%
+            - 'SonataAdminBundle:CRUD'
+
+    admin.visit:
+        class: CoreBundle\Admin\VisitAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm,  icon: '<i class="fa fa-clock-o"></i>', group: "Время", label: "Часы" }
+        arguments:
+            - ~
+            - %visit%
+            - 'SonataAdminBundle:CRUD'
+
+    admin.pryme_day:
+        class: CoreBundle\Admin\PrymeDayAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm,  icon: '<i class="fa fa-clock-o"></i>', group: "Время", label: "Даты" }
+        arguments:
+            - ~
+            - %pryme_day%
+            - 'SonataAdminBundle:CRUD'
+
+    admin.city:
+        class: CoreBundle\Admin\CityAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm,  icon: '<i class="fa fa-globe"></i>', group: "Города", label: "Города", on_top: true }
+        arguments:
+            - ~
+            - %city%
+            - 'SonataAdminBundle:CRUD'
+
+    admin.gallery:
+        class: CoreBundle\Admin\GallereyAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm,  icon: '<i class="fa fa-photo"></i>', group: "Галерея", label: "Галерея", on_top: true }
+        arguments:
+            - ~
+            - %gallery%
+            - 'SonataAdminBundle:CRUD'
+
+    admin.rule:
+        class: CoreBundle\Admin\RuleAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm,  icon: '<i class="fa fa-newspaper-o"></i>', group: "Правила", label: "Правила", on_top: true }
+        arguments:
+            - ~
+            - %rule%
+            - 'SonataAdminBundle:CRUD'

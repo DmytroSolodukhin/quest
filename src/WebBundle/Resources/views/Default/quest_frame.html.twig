@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="yandex-verification" content="ef680a1f137132cf" />
+
+    {% block title %}
+        <title>
+            Квест комната {{ quest.title }}, {{ quest.city.title }} Occulto
+        </title>
+    {% endblock %}
+
+    {% block metateg %}
+        <meta name="description" content="occulto - {{ quest.title }}, игра, квест комната, секрет, логика, интеллект, головоломки, интуиция, occulto">
+        <meta name="keywords" content="{{ quest.city.title }}, квест, комната, квеструм, эскейпрум, {{ quest.title }}" />
+    {% endblock %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="/css/bootstrap.css" rel="stylesheet">
+        <link href="/css/main.css" rel="stylesheet">
+        <link href="/css/mainFrme.css" rel="stylesheet">
+        <link href="/css/slidup.css" rel="stylesheet">
+        <link href="/css/font-awesome.min.css" rel="stylesheet">
+
+        <script src="/js/respond.min.js"></script>
+        <script src="/js/vendor/modernizr-2.6.2.min.js"></script>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-90097863-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-MTWTQXP');</script>
+        <!-- End Google Tag Manager -->
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,700,300,600,400italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MTWTQXP"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please
+    <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+{% block myCanvas %}
+    <canvas id="myCanvas"></canvas>
+{% endblock %}
+
+<main>
+{% block content %}
+    <div class="preloader active" id="preloader">
+        <div>
+            <h2><b>Пожалуйста подождите</b></h2>
+            <img src="/images/loading_normal.gif">
+        </div>
+    </div>
+    <section>
+        <div class=" quest_blocks">
+<hr>
+            <div id="visit_table">
+                <div id="mounth_visit" data-bind="foreach: mounthList()">
+                        <div class="col-sm-3 col-lg-3 col-lg-offset-2 quest_table_name day">
+                            <h4 data-bind="text: value.date+' '+value.title+' - '+value.name">
+                            </h4>
+                        </div>
+                        <div class="select_time" data-bind="foreach: $parent.respArray(value.mounth+'_'+value.date+'_'+value.year)">
+                            <div class="col-sm-1">
+                                <button style="min-height: 45px"
+                                        data-bind="enable: !selected, click: $root.selectVisit($parent.value.mounth+'_'+$parent.value.date+'_'+$parent.value.year, id)">
+                                    <div data-bind="text:title"></div>
+                                    <div class="price" data-bind="text: price+' грн', visible: !selected">
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div id="billing_popup" class="scroll" data-bind="visible: showBilling()">
+            <div class="closePopup" data-bind="click: closePopup()">X</div>
+            <h3>
+                При заказе, ждите звонка от нашего оператора, для подтверждения!
+            </h3>
+            <div class="row">
+                <form id="Reservation" data-bind="submit: sendReserv">
+                    <div class="col-sm-4">
+                        <h3>Время:
+                            <span class="curentTime" data-bind="text: curentPrice().title"></span>
+                        </h3>
+                        <h3>День:
+                            <span class="curentDate" data-bind="text: curentDate()"></span>
+                        </h3>
+                        <h3>Цена:
+                            <span class="curentPrice" data-bind="text: curentPrice().price+' грн'"></span>
+                        </h3>
+                    </div>
+                    <div class="col-sm-4">
+                        <fieldset>
+                            <label for="Phone">Телефон:</label>
+                            <input type="tel" id="Phone" data-bind="value: phone" name="phone" placeholder="(063)1392958"
+                                   maxlength="16" >
+                            <br>
+                            <label for="Name">Имя:</label>
+                            <input type="text" id="Name" data-bind="value: name" name="name" placeholder="Дмитрий"
+                                   maxlength="10">
+                            <br>
+
+                        </fieldset>
+                    </div>
+                    <div class="col-sm-4">
+                        <fieldset>
+                            <label for="description">Количество человек:</label>
+                            <br>
+                            <input type="number" id="numberUser" value="4"  max="{{ quest.maxCount }}" autocomplete="off">
+                            <br>
+                            <input type="submit" value="Заказать">
+                            <br>
+                        </fieldset>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <div id="success">
+        <h1>{{ quest.title }}</h1>
+        <div class="closePopup" data-bind="click: closeSuccessPopup">X</div>
+        <hr>
+        <h1>
+            Поздравляю, Ваша заявка принята! Ждите звонка от нашего оператора.
+        </h1>
+    </div>
+
+    <div id="errorSuccess">
+        <h1>{{ quest.title }}</h1>
+        <div class="closePopup" data-bind="click: closeerrorSuccess">X</div>
+        <hr>
+        <h2 data-bind="text: error()">
+        </h2>
+    </div>
+{% endblock %}
+</main>
+
+{% block footer_js %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/js/jquery.min.js"><\/script>')</script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/plugins.js"></script>
+    <script src="/js/jquery.colorbox-min.js"></script>
+    <script src="/js/smoke.js"></script>
+    <script src="/js/knockout-3.4.0.js"></script>
+    <script src="/js/visit_table.js"></script>
+    <script>
+        var time_visit = [],
+                visit = [],
+                params = {
+                    maxCount: {{ quest.maxCount }},
+                    count: {{ quest.count }},
+                    pay: {{ quest.plusPay }},
+                    primeDate: []
+                };
+        {% for pdate in quest.primeDate %}
+        params.primeDate.push({
+            date: "{{ pdate.date|date('n_j_Y') }}",
+            price: {{ pdate.price }}
+        });
+        {% endfor %}
+
+        {% for time_visit in quest.time %}
+
+        time_visit.push({
+            date: '{{ time_visit.open|date("n_j_Y") }}',
+            name: '{{ time_visit.title }}',
+            id_visit: '{{ time_visit.visit.id }}',
+            time: '{{ time_visit.visit.title }}'
+        });
+        {% endfor %}
+
+        {% for open in quest.open %}
+        visit.push({
+            id: {{ open.id }},
+            title: '{{ open.title }}',
+            price: {{ open.price }}
+        });
+
+
+        {% endfor %}
+        ko.applyBindings(new TableVisitViewModel(time_visit, visit, {{ quest.id }}, params));
+    </script>
+{% endblock %}
+
